@@ -1,45 +1,15 @@
+// Test ID: IIDSAT
+import { useLoaderData } from 'react-router-dom';
+import { getOrder } from '../../services/apiRestaurant';
 import {
 	calcMinutesLeft,
 	formatCurrency,
 	formatDate,
 } from '../../utilities/helpers';
 
-const order = {
-	id: 'ABCDEF',
-	customer: 'Karen',
-	phone: '1234567890',
-	address: 'Brisbane, Queensland, Australia',
-	priority: true,
-	estimatedDelivery: '2023-06-17T21:00:00',
-	cart: [
-		{
-			pizzaId: 7,
-			name: 'Napoli',
-			quantity: 3,
-			unitPrice: 16,
-			totalPrice: 48,
-		},
-		{
-			pizzaId: 5,
-			name: 'Diavola',
-			quantity: 2,
-			unitPrice: 16,
-			totalPrice: 32,
-		},
-		{
-			pizzaId: 3,
-			name: 'Romana',
-			quantity: 1,
-			unitPrice: 15,
-			totalPrice: 15,
-		},
-	],
-	position: '-27.000, 153.000',
-	orderPrice: 95,
-	priorityPrice: 19,
-};
-
 export default function Order() {
+	const order = useLoaderData();
+
 	const { status, priority, priorityPrice, orderPrice, estimatedDelivery } =
 		order;
 
@@ -77,4 +47,8 @@ export default function Order() {
 			</div>
 		</div>
 	);
+}
+
+export async function loader({ params }) {
+	return await getOrder(params.orderID);
 }
