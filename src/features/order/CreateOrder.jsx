@@ -1,11 +1,4 @@
-import { useState } from 'react';
-import {
-	Form,
-	redirect,
-	useActionData,
-	useNavigate,
-	useNavigation,
-} from 'react-router-dom';
+import { Form, redirect, useActionData, useNavigation } from 'react-router-dom';
 import { formatCurrency } from '../../utilities/helpers';
 import { createOrder } from '../../services/apiRestaurant';
 
