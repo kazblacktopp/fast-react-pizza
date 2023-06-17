@@ -1,5 +1,6 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import AppLayout from './ui/AppLayout';
+import ErrorBoundary from './ui/ErrorBoundary';
 import Home from './ui/Home';
 import Menu, { loader as menuLoader } from './features/menu/Menu';
 import Cart from './features/cart/Cart';
@@ -13,7 +14,12 @@ function App() {
 			children: [
 				{ path: '/', element: <Home /> },
 				{ path: '/cart', element: <Cart /> },
-				{ path: '/menu', element: <Menu />, loader: menuLoader },
+				{
+					path: '/menu',
+					element: <Menu />,
+					loader: menuLoader,
+					errorElement: <ErrorBoundary />,
+				},
 				{ path: '/order/new', element: <CreateOrder /> },
 				{ path: '/order/:orderID', element: <Order /> },
 			],
