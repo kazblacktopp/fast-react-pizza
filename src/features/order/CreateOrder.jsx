@@ -1,6 +1,7 @@
 import { Form, redirect, useActionData, useNavigation } from 'react-router-dom';
 import { formatCurrency } from '../../utilities/helpers';
 import { createOrder } from '../../services/apiRestaurant';
+import Button from '../../ui/Button';
 
 // https://uibakery.io/regex-library/phone-number
 function isValidPhone(str) {
@@ -49,26 +50,47 @@ export default function CreateOrder() {
 				<div>
 					<label htmlFor="firstName">First Name</label>
 					<input
+						className="input"
 						type="text"
 						id="firstName"
 						name="customer"
+						autoComplete="off"
 						required
 					/>
 				</div>
 
 				<div>
 					<label htmlFor="phoneNumber">Phone number</label>
-					<input type="tel" id="phoneNumber" name="phone" required />
+					<input
+						className="input"
+						type="tel"
+						id="phoneNumber"
+						name="phone"
+						autoComplete="off"
+						required
+					/>
 					{formErrors?.phone && <p>{formErrors.phone}</p>}
 				</div>
 
 				<div>
 					<label htmlFor="address">Address</label>
-					<input type="text" id="address" name="address" required />
+					<input
+						className="input"
+						type="text"
+						id="address"
+						name="address"
+						autoComplete="off"
+						required
+					/>
 				</div>
 
 				<div>
-					<input type="checkbox" name="priority" id="priority" />
+					<input
+						className="h-6 w-6 accent-yellow-400 focus:outline-none focus:ring focus:ring-yellow-400 focus:ring-offset-2"
+						type="checkbox"
+						name="priority"
+						id="priority"
+					/>
 					<label htmlFor="priority">
 						Want to give your order priority?
 						{formatCurrency('19.00')}
@@ -81,12 +103,9 @@ export default function CreateOrder() {
 						name="cart"
 						value={JSON.stringify(cart)}
 					/>
-					<button
-						disabled={isSubmitting}
-						className="rounded-full bg-yellow-400 px-4 py-3 font-semibold uppercase tracking-wide text-stone-800 transition-colors duration-300 hover:bg-yellow-300 focus:bg-yellow-300 focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-stone-300 disabled:text-opacity-50"
-					>
+					<Button disabled={isSubmitting}>
 						{isSubmitting ? 'Placing order...' : 'Order Now'}
-					</button>
+					</Button>
 				</div>
 			</Form>
 		</div>

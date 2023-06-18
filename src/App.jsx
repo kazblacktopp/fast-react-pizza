@@ -13,6 +13,7 @@ function App() {
 	const router = createBrowserRouter([
 		{
 			element: <AppLayout />,
+			errorElement: <ErrorBoundary />,
 			children: [
 				{ path: '/', element: <Home /> },
 				{ path: '/cart', element: <Cart /> },
