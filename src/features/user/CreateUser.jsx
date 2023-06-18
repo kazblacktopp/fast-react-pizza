@@ -5,7 +5,7 @@ export default function CreateUser() {
 
 	return (
 		<form>
-			<p>Welcome! Please start by terlling us your name:</p>
+			<p>Welcome! Please start by telling us your name:</p>
 
 			<input
 				type="text"
