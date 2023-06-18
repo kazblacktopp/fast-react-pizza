@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import SearchOrder from '../features/order/SearchOrder';
+import Username from '../features/user/Username';
 
 export default function Header() {
 	return (
@@ -10,7 +11,7 @@ export default function Header() {
 
 			<SearchOrder />
 
-			<p>Karen Blacktopp</p>
+			<Username />
 		</header>
 	);
 }
