@@ -43,14 +43,18 @@ export default function CreateOrder() {
 	const cart = fakeCart;
 
 	return (
-		<div>
-			<h2>Ready to order? Let's go!</h2>
+		<div className="px-4 py-6">
+			<h2 className="mb-8 text-xl font-semibold">
+				Ready to order? Let's go!
+			</h2>
 
 			<Form method="POST">
-				<div>
-					<label htmlFor="firstName">First Name</label>
+				<div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
+					<label className="sm:basis-40" htmlFor="firstName">
+						First Name
+					</label>
 					<input
-						className="input"
+						className="input grow"
 						type="text"
 						id="firstName"
 						name="customer"
@@ -59,39 +63,51 @@ export default function CreateOrder() {
 					/>
 				</div>
 
-				<div>
-					<label htmlFor="phoneNumber">Phone number</label>
-					<input
-						className="input"
-						type="tel"
-						id="phoneNumber"
-						name="phone"
-						autoComplete="off"
-						required
-					/>
-					{formErrors?.phone && <p>{formErrors.phone}</p>}
+				<div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
+					<label className="sm:basis-40" htmlFor="phoneNumber">
+						Phone number
+					</label>
+					<div className="grow">
+						<input
+							className="input w-full"
+							type="tel"
+							id="phoneNumber"
+							name="phone"
+							autoComplete="off"
+							required
+						/>
+						{formErrors?.phone && (
+							<p className="mt-2 rounded-md bg-red-100 px-4 py-2 text-xs text-red-700 md:px-6 md:py-3">
+								{formErrors.phone}
+							</p>
+						)}
+					</div>
 				</div>
 
-				<div>
-					<label htmlFor="address">Address</label>
-					<input
-						className="input"
-						type="text"
-						id="address"
-						name="address"
-						autoComplete="off"
-						required
-					/>
+				<div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
+					<label className="sm:basis-40" htmlFor="address">
+						Address
+					</label>
+					<div className="grow">
+						<input
+							className="input w-full"
+							type="text"
+							id="address"
+							name="address"
+							autoComplete="off"
+							required
+						/>
+					</div>
 				</div>
 
-				<div>
+				<div className="mb-12 flex items-center gap-5">
 					<input
 						className="h-6 w-6 accent-yellow-400 focus:outline-none focus:ring focus:ring-yellow-400 focus:ring-offset-2"
 						type="checkbox"
 						name="priority"
 						id="priority"
 					/>
-					<label htmlFor="priority">
+					<label className="font-medium" htmlFor="priority">
 						Want to give your order priority?
 						{formatCurrency('19.00')}
 					</label>
