@@ -5,9 +5,9 @@ const initialState = {
 	cart: [
 		{
 			pizzaId: 12,
-			pizzaName: 'Margherita',
+			name: 'Margherita',
+			quantity: 2,
 			unitPrice: 12,
-			unitQuantity: 2,
 			totalPrice: 24,
 		},
 	],
@@ -33,8 +33,8 @@ const cartSlice = createSlice({
 				item => item.pizzaId === action.payload,
 			);
 
-			cartItem.unitQuantity++;
-			cartItem.totalPrice = cartItem.unitQuantity * cartItem.unitPrice;
+			cartItem.quantity++;
+			cartItem.totalPrice = cartItem.quantity * cartItem.unitPrice;
 		},
 		decreaseItemQuantity(state, action) {
 			// action.payload = pizzaId
@@ -42,8 +42,8 @@ const cartSlice = createSlice({
 				item => item.pizzaId === action.payload,
 			);
 
-			cartItem.unitQuantity--;
-			cartItem.totalPrice = cartItem.unitQuantity * cartItem.unitPrice;
+			cartItem.quantity--;
+			cartItem.totalPrice = cartItem.quantity * cartItem.unitPrice;
 		},
 		clearCart(state) {
 			state.cart = [];
