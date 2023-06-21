@@ -4,6 +4,7 @@ import Button from '../../ui/Button';
 import CartItem from './CartItem';
 import { getCart, clearCart } from './cartSlice';
 import { getUsername } from '../user/userSlice';
+import EmptyCart from './EmptyCart';
 
 export default function Cart() {
 	const username = useSelector(getUsername);
@@ -15,6 +16,8 @@ export default function Cart() {
 	function handleClearCart() {
 		dispatch(clearCart());
 	}
+
+	if (cart.length === 0) return <EmptyCart />;
 
 	return (
 		<div className="px-4 py-3">
@@ -36,19 +39,11 @@ export default function Cart() {
 			</ul>
 
 			<div className="mt-6 space-x-2">
-				<Button
-					disabled={cart.length === 0}
-					type="primary"
-					to="/order/new"
-				>
+				<Button type="primary" to="/order/new">
 					Order pizzas
 				</Button>
 
-				<Button
-					onClick={handleClearCart}
-					type="secondary"
-					disabled={cart.length === 0}
-				>
+				<Button onClick={handleClearCart} type="secondary">
 					Clear cart
 				</Button>
 			</div>
