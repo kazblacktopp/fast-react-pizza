@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
 	cart: [],
+	hasPriority: false,
 };
 
 const cartSlice = createSlice({
@@ -43,6 +44,9 @@ const cartSlice = createSlice({
 		clearCart(state) {
 			state.cart = [];
 		},
+		toggleCartPriority(state) {
+			state.hasPriority = !state.hasPriority;
+		},
 	},
 });
 
@@ -52,11 +56,14 @@ export const {
 	increaseItemQuantity,
 	decreaseItemQuantity,
 	clearCart,
+	toggleCartPriority,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
 
 export const getCart = state => state.cart.cart;
+
+export const getCartPriority = state => state.cart.hasPriority;
 
 export const getTotalCartQuantity = state =>
 	state.cart.cart.reduce((sum, item) => sum + item.quantity, 0);
