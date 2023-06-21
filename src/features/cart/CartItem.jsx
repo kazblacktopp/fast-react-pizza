@@ -1,5 +1,6 @@
 import { formatCurrency } from '../../utilities/helpers';
 import DeleteCartItem from './DeleteCartItem';
+import UpdateCartItemQuantity from './UpdateCartItemQuantity';
 
 export default function CartItem({ item }) {
 	const { pizzaId, name, quantity, totalPrice } = item;
@@ -13,7 +14,13 @@ export default function CartItem({ item }) {
 				<p className="text-sm font-bold">
 					{formatCurrency(totalPrice)}
 				</p>
-				<DeleteCartItem pizzaId={pizzaId} />
+				<div className="flex gap-6">
+					<UpdateCartItemQuantity
+						pizzaId={pizzaId}
+						quantity={quantity}
+					/>
+					<DeleteCartItem pizzaId={pizzaId} />
+				</div>
 			</div>
 		</li>
 	);
