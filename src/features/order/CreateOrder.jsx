@@ -3,7 +3,6 @@ import { formatCurrency } from '../../utilities/helpers';
 import { createOrder } from '../../services/apiRestaurant';
 import Button from '../../ui/Button';
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
 
 // https://uibakery.io/regex-library/phone-number
 function isValidPhone(str) {
