@@ -3,9 +3,10 @@ import LinkButton from '../../ui/LinkButton';
 import Button from '../../ui/Button';
 import CartItem from './CartItem';
 import { getCart, clearCart } from './cartSlice';
+import { getUsername } from '../user/userSlice';
 
 export default function Cart() {
-	const { username } = useSelector(state => state.user);
+	const username = useSelector(getUsername);
 
 	const cart = useSelector(getCart);
 
