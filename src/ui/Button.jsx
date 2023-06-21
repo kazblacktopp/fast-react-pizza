@@ -11,7 +11,7 @@ export default function Button({ children, disabled, to, type, onClick }) {
 		small: base + ' py-2 md:px-5 md:py-4 text-xs',
 	};
 
-	if (to && !disabled)
+	if (to)
 		return (
 			<Link to={to} className={styles[type]}>
 				{children}
