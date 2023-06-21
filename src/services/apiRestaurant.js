@@ -31,9 +31,11 @@ export async function createOrder(newOrder) {
 		});
 
 		if (!res.ok) throw Error();
+
 		const { data } = await res.json();
+
 		return data;
 	} catch {
-		throw Error('Failed creating your order');
+		throw Error('Failed to create your order');
 	}
 }
