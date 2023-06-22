@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const PRIORITY_FEE_MULTIPLIER = 1.2; // 20%
+
 const initialState = {
 	cart: [],
 	hasPriority: false,
@@ -68,8 +70,12 @@ export const getCartPriority = state => state.cart.hasPriority;
 export const getTotalCartQuantity = state =>
 	state.cart.cart.reduce((sum, item) => sum + item.quantity, 0);
 
-export const getTotalCartPrice = state =>
-	state.cart.cart.reduce((sum, item) => sum + item.totalPrice, 0);
+export const getTotalCartPrice = state => {
+	const fee =
+		state.cart.cart.reduce((sum, item) => sum + item.totalPrice, 0) *
+		(state.cart.hasPriority ? PRIORITY_FEE_MULTIPLIER : 1);
+	return Math.round(fee);
+};
 
 export const getItemQuantityById = id => state =>
 	state.cart.cart.find(item => item.pizzaId === id)?.quantity ?? 0;
